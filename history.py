@@ -8,7 +8,7 @@ import time
 
 csv_input_file = open('csv/sfangels1.csv')
 angel_reader = csv.reader(csv_input_file)
-csv_output_file = open('csv/sfangels1_output.csv', 'w')
+csv_output_file = open('csv/sfangels1_output.csv', 'a')
 angel_writer = csv.writer(csv_output_file, delimiter='\t')
 
 output_rows = []
@@ -38,5 +38,6 @@ for row in angel_reader:
     row.append(interests.encode('ascii', 'ignore'))
     print row
     angel_writer.writerow(row)
-    time.sleep(1)
+    csv_output_file.flush()
+    time.sleep(1.5)
 csv_output_file.close()
